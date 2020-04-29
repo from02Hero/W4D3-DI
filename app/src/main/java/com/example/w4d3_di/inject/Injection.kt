@@ -23,7 +23,7 @@ class Injection {
 
     private fun provideUrbanRestService(): UrbanRestService {
         if (userRestService == null) {
-            userRestService = UrbanRestService.instance
+//            userRestService = UrbanRestService.instance
         }
         return userRestService as UrbanRestService
     }

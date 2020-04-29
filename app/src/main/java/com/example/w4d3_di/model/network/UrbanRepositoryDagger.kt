@@ -8,10 +8,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-open class UrbanRepositoryImpl (private val urbanRestService: UrbanRestService,
-                                                   private val appDatabase: AppDatabase) : UrbanRepository {
+open class UrbanRepositoryDagger @Inject constructor(private val urbanRestService: UrbanRestService,
+                                                     private val appDatabase: AppDatabase)  {
 
-    override fun getDefinitionList(term: String): Single<MutableList<Word>> {
+    fun getDefinitionList(term: String): Single<MutableList<Word>> {
         return getDefinitionFromDB(term)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
